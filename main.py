@@ -33,8 +33,8 @@ Upload this data to Google Colab.
 Then, mount Google Drive from your Google Colab notebook:
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
 import glob
 
@@ -69,39 +69,39 @@ def build_numpy_arr(keys: list, data_dict: dict) -> np.ndarray:
 
     return arr
 
-train_images = {}
-load_data("/content/drive/My Drive/CSC321/data/train/*.jpg", train_images)
-print("training data loaded")
+# train_images = {}
+# load_data("/content/drive/My Drive/CSC321/data/train/*.jpg", train_images)
+# print("training data loaded")
 
-test_m_images = {}
-load_data("/content/drive/My Drive/CSC321/data/test_m/*.jpg", test_m_images)
-print("test_m loaded")
+# test_m_images = {}
+# load_data("/content/drive/My Drive/CSC321/data/test_m/*.jpg", test_m_images)
+# print("test_m loaded")
 
-test_w_images = {}
-load_data("/content/drive/My Drive/CSC321/data/test_w/*.jpg", test_w_images)
-print("test_w loaded")
+# test_w_images = {}
+# load_data("/content/drive/My Drive/CSC321/data/test_w/*.jpg", test_w_images)
+# print("test_w loaded")
 
 
-keys = list(train_images.keys())
-keys.sort()
-train_data = build_numpy_arr(keys[120:], train_images)
+# keys = list(train_images.keys())
+# keys.sort()
+# train_data = build_numpy_arr(keys[120:], train_images)
 
-valid_data = build_numpy_arr(keys[:120], train_images)
+# valid_data = build_numpy_arr(keys[:120], train_images)
 
-keys = list(test_m_images.keys())
-keys.sort()
-test_m = build_numpy_arr(keys, test_m_images)
+# keys = list(test_m_images.keys())
+# keys.sort()
+# test_m = build_numpy_arr(keys, test_m_images)
 
-keys = list(test_w_images.keys())
-keys.sort()
-test_w = build_numpy_arr(keys, test_w_images)
+# keys = list(test_w_images.keys())
+# keys.sort()
+# test_w = build_numpy_arr(keys, test_w_images)
 
-plt.figure()
-plt.imshow(train_data[4,0,0,:,:,:]) # left shoe of first pair submitted by 5th student
-plt.figure()
-plt.imshow(train_data[4,0,1,:,:,:]) # right shoe of first pair submitted by 5th student
-plt.figure()
-plt.imshow(train_data[4,1,1,:,:,:]) # right shoe of second pair submitted by 5th student
+# plt.figure()
+# plt.imshow(train_data[4,0,0,:,:,:]) # left shoe of first pair submitted by 5th student
+# plt.figure()
+# plt.imshow(train_data[4,0,1,:,:,:]) # right shoe of first pair submitted by 5th student
+# plt.figure()
+# plt.imshow(train_data[4,1,1,:,:,:]) # right shoe of second pair submitted by 5th student
 
 def generate_same_pair(data: np.ndarray) -> np.ndarray:
     """Returns same pairs of shoes as an numpy array concatenated together along
@@ -127,9 +127,9 @@ def generate_same_pair(data: np.ndarray) -> np.ndarray:
 
     return same_pairs
 
-print(train_data.shape) # if this is [N, 3, 2, 224, 224, 3]
-print(generate_same_pair(train_data).shape) # should be [N*3, 448, 224, 3]
-plt.imshow(generate_same_pair(train_data)[0]) # should show 2 shoes from the same pair
+# print(train_data.shape) # if this is [N, 3, 2, 224, 224, 3]
+# print(generate_same_pair(train_data).shape) # should be [N*3, 448, 224, 3]
+# plt.imshow(generate_same_pair(train_data)[0]) # should show 2 shoes from the same pair
 
 
 def generate_different_pair(data: np.ndarray) -> np.ndarray:
@@ -156,9 +156,9 @@ def generate_different_pair(data: np.ndarray) -> np.ndarray:
 
     return same_pairs
 
-print(train_data.shape) # if this is [N, 3, 2, 224, 224, 3]
-print(generate_different_pair(train_data).shape) # should be [N*3, 448, 224, 3]
-plt.imshow(generate_different_pair(train_data)[0]) # should show 2 shoes from different pairs
+# print(train_data.shape) # if this is [N, 3, 2, 224, 224, 3]
+# print(generate_different_pair(train_data).shape) # should be [N*3, 448, 224, 3]
+# plt.imshow(generate_different_pair(train_data)[0]) # should show 2 shoes from different pairs
 
 
 """
